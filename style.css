@@ -7,19 +7,19 @@ h1 {
 }
 
 .gridFrame {
-  height: 10px;
-  width: 10px;
+  height: 50vh;
+  width: 50vw;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 
 }
 
 .tile {
-  height: 150px;
-  Width:300px;
-  background-color: lightblue;
-  border: red solid 5px;
+  height: 14vh;
+  Width: 14vw;
+  background-color: white;
+  border: white solid 5px;
   text-align:center;
   font-size: 5em;
 }
@@ -33,11 +33,11 @@ button {
 
 
 .dot {
-  height: 100px;
-  width: 100px;
-  margin-left: 100px;
-  margin-top: 25px;
-  border-radius: 50px;
+  height: 100%;
+  width: 100%;
+  /* margin-left: 100px;
+  margin-top: 25px; */
+  border-radius: 100%;
   background-color: black;
 
 }
