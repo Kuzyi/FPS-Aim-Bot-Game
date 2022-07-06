@@ -1,0 +1,31 @@
+h1 {
+  background-color: aquamarine;
+}
+
+* {
+  background-color: aqua;
+}
+
+.gridFrame {
+  height: 10px;
+  width: 10px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+
+}
+
+.tile {
+  height: 100px;
+  Width:100px;
+  background-color: lightcoral;
+  border: blue solid 5px;
+  text-align:center;
+  font-size: 5em;
+}
+
+button {
+  background-color: aliceblue;
+  margin: 5px;
+
+}
