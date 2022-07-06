@@ -45,3 +45,11 @@ function dotNewTile() {
   //   computerChoice()
   // }
 }
+
+// make a game intializor
+
+let startGame = document.querySelector('.startButton')
+
+startGame.onclick = function () {
+  dotNewTile()
+}
