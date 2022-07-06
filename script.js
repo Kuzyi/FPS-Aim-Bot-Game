@@ -8,53 +8,40 @@ let game = {
   rows: ['1', '2', '3', '4', '5'],
   currentPosition: [],
   currentScore: 0,
+  oldScore: 0,
   turnCount: [],
   started: false,
   strikes: 0
 }
 
+// defining global variables
+let dot = document.createElement('div')
+dot.setAttribute('class', 'dot')
+let startGame = document.querySelector('.startButton')
+
+// getting random number
 function getRandomInt(max) {
   return Math.floor(Math.random() * max)
 }
-function dotStartTile() {
+
+// places starting dot
+function dotStartTile(dot) {
   let column = game.columns[getRandomInt(5)]
   let row = game.rows[getRandomInt(5)]
 
   let className = row + ' ' + column
 
   let compChoice = document.getElementsByClassName(className)[0]
-
-  // we have now selected for a random positon on the grid compChoice is that position
-
-  // now we need to create a dot in the grid location
-
-  let dot = document.createElement('div')
-  dot.setAttribute('class', 'dot')
+  // took out the creation of dot. now it is just appended
   compChoice.append(dot)
 
   setTimeout(() => {
     newDotLocation(dot)
     console.log('Delayed for 2 seconds.')
   }, 2000)
-
-  // now we have created a dot in a random grid position - now we need the function to wait 2 seconds and then delete this dot and create another dot
-  //(preferably create the dot somewhere else)
-}
-
-// make a game intializor
-
-let startGame = document.querySelector('.startButton')
-
-startGame.onclick = function () {
-  if (game.started === false) {
-    game.started = true
-    dotStartTile()
-  }
 }
 
 function newDotLocation(dot) {
-  game.strikes++
-  document.getElementsByClassName('strikes')[0].innerHTML = game.strikes
   let column = game.columns[getRandomInt(5)]
   let row = game.rows[getRandomInt(5)]
 
@@ -62,42 +49,45 @@ function newDotLocation(dot) {
 
   let compChoice = document.getElementsByClassName(newClassLocation)[0]
 
+  let oldScore = game.currentScore
+
   compChoice.append(dot)
   if (game.strikes != 3) {
     setTimeout(() => {
-      newDotLocation(dot)
-      console.log('you did not hit the dot in time')
+      if ((oldScore = game.currentScore)) {
+        game.strikes++
+        document.getElementsByClassName('strikes')[0].innerHTML = game.strikes
+        newDotLocation(dot)
+        console.log('you did not hit the dot in time')
+      }
     }, 2000)
-  } else {
+  } else if (game.strikes === 3) {
     setTimeout(() => {
       alert('sorry you lost. Reload the page to play again')
     }, 200)
   }
 }
 
-function newDotLocationPlayer(dot) {
-  game.score++
-  document.getElementsByClassName('score')[0].innerHTML = game.currentScore
-  let column = game.columns[getRandomInt(5)]
-  let row = game.rows[getRandomInt(5)]
-
-  let newClassLocation = row + ' ' + column
-
-  let compChoice = document.getElementsByClassName(newClassLocation)[0]
-
-  compChoice.append(dot)
-  if (game.strikes != 3) {
-    setTimeout(() => {
-      newDotLocation(dot)
-      console.log('you did not hit the dot in time')
-    }, 2000)
-  } else {
-    setTimeout(() => {
-      alert('sorry you lost. Reload the page to play again')
-    }, 200)
+// Event Listeners
+startGame.onclick = function () {
+  if (game.started === false) {
+    game.started = true
+    dotStartTile(dot)
   }
 }
 
 dot.onclick = function () {
-  newDotLocationPlayer(dot)
+  if (game.started === true) {
+    game.currentScore++
+    document.getElementsByClassName('score')[0].innerHTML = game.currentScore
+    newDotLocation(dot)
+  }
 }
+
+// to do
+
+//set up old score
+
+// add player click on dot thing
+
+// might be an issue since dot has not been created? although it exists so I think we are fine?
