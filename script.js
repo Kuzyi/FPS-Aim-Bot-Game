@@ -1,15 +1,10 @@
-// I need to create a function that puts the dot on random tile
-//i need a way to make what goes there a dot and not a character.
-// I need a timer that after the element is placed, the game counts down 2 seconds and then runs the function again.
-//I need a way to start the game. a start button.
-
 let game = {
   columns: ['a', 'b', 'c', 'd', 'e'],
   rows: ['1', '2', '3', '4', '5'],
   currentPosition: [],
   currentScore: 0,
   oldScore: 0,
-  turnCount: [],
+  turnCount: 0,
   started: false,
   strikes: 0,
   timeInterval: '2000'
@@ -34,6 +29,27 @@ function newDotLocation(dot) {
   let compChoice = document.getElementsByClassName(newClassLocation)[0]
 
   let oldScore = game.currentScore
+
+  game.turnCount++
+  console.log(game.turnCount)
+
+  switch (game.turnCount) {
+    case 5:
+      game.timeInterval = '1500'
+      break
+    case 10:
+      game.timeInterval = '1250'
+      break
+    case 15:
+      game.timeInterval = '1000'
+      break
+    case 20:
+      game.timeInterval = '750'
+      break
+    case 25:
+      game.timeInterval = '700'
+      break
+  }
 
   compChoice.append(dot)
   if (game.strikes != 3) {
