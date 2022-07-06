@@ -74,3 +74,30 @@ function newDotLocation(dot) {
     }, 200)
   }
 }
+
+function newDotLocationPlayer(dot) {
+  game.score++
+  document.getElementsByClassName('score')[0].innerHTML = game.currentScore
+  let column = game.columns[getRandomInt(5)]
+  let row = game.rows[getRandomInt(5)]
+
+  let newClassLocation = row + ' ' + column
+
+  let compChoice = document.getElementsByClassName(newClassLocation)[0]
+
+  compChoice.append(dot)
+  if (game.strikes != 3) {
+    setTimeout(() => {
+      newDotLocation(dot)
+      console.log('you did not hit the dot in time')
+    }, 2000)
+  } else {
+    setTimeout(() => {
+      alert('sorry you lost. Reload the page to play again')
+    }, 200)
+  }
+}
+
+dot.onclick = function () {
+  newDotLocationPlayer(dot)
+}
