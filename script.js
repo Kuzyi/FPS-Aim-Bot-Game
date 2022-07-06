@@ -24,23 +24,6 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max)
 }
 
-// places starting dot
-function dotStartTile(dot) {
-  let column = game.columns[getRandomInt(5)]
-  let row = game.rows[getRandomInt(5)]
-
-  let className = row + ' ' + column
-
-  let compChoice = document.getElementsByClassName(className)[0]
-  // took out the creation of dot. now it is just appended
-  compChoice.append(dot)
-
-  setTimeout(() => {
-    newDotLocation(dot)
-    console.log('Delayed for 2 seconds.')
-  }, 2000)
-}
-
 function newDotLocation(dot) {
   let column = game.columns[getRandomInt(5)]
   let row = game.rows[getRandomInt(5)]
@@ -72,7 +55,7 @@ function newDotLocation(dot) {
 startGame.onclick = function () {
   if (game.started === false) {
     game.started = true
-    dotStartTile(dot)
+    newDotLocation(dot)
   }
 }
 
