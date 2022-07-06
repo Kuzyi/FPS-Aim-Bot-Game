@@ -18,7 +18,7 @@ let game = {
 let dot = document.createElement('div')
 dot.setAttribute('class', 'dot')
 let startGame = document.querySelector('.startButton')
-
+let restart = document.querySelector('.restart')
 // getting random number
 function getRandomInt(max) {
   return Math.floor(Math.random() * max)
@@ -46,7 +46,7 @@ function newDotLocation(dot) {
     }, 2000)
   } else if (game.strikes === 3) {
     setTimeout(() => {
-      alert('sorry you lost. Reload the page to play again')
+      alert('sorry you lost. Click "Restart" to play again')
     }, 200)
   }
 }
@@ -67,10 +67,10 @@ dot.onclick = function () {
   }
 }
 
+restart.onclick = function () {
+  if (game.started === true) {
+    game.started = false // i know these are pointless for now, but I am keeping them in case I decide to have a reset button that does not reload the page.
+    location.reload()
+  }
+}
 // to do
-
-//set up old score
-
-// add player click on dot thing
-
-// might be an issue since dot has not been created? although it exists so I think we are fine?
