@@ -34,7 +34,7 @@ function dotStartTile() {
 
   setTimeout(() => {
     newDotLocation(dot)
-    console.log('Delayed for 1 second.')
+    console.log('Delayed for 2 seconds.')
   }, 2000)
 
   // now we have created a dot in a random grid position - now we need the function to wait 2 seconds and then delete this dot and create another dot
@@ -54,6 +54,7 @@ startGame.onclick = function () {
 
 function newDotLocation(dot) {
   game.strikes++
+  document.getElementsByClassName('strikes')[0].innerHTML = game.strikes
   let column = game.columns[getRandomInt(5)]
   let row = game.rows[getRandomInt(5)]
 
@@ -68,6 +69,8 @@ function newDotLocation(dot) {
       console.log('you did not hit the dot in time')
     }, 2000)
   } else {
-    alert('sorry you lost. Reload the page to play again')
+    setTimeout(() => {
+      alert('sorry you lost. Reload the page to play again')
+    }, 200)
   }
 }
