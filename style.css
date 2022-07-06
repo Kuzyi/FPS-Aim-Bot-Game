@@ -33,8 +33,10 @@ button {
 
 
 .dot {
-  height: 100%;
-  width: 100%;
+  position: relative;
+  width: 40%;
+  height: 0;
+  padding-bottom: 40%;
   /* margin-left: 100px;
   margin-top: 25px; */
   border-radius: 100%;
