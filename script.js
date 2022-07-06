@@ -11,7 +11,8 @@ let game = {
   oldScore: 0,
   turnCount: [],
   started: false,
-  strikes: 0
+  strikes: 0,
+  timeInterval: '2000'
 }
 
 // defining global variables
@@ -43,7 +44,7 @@ function newDotLocation(dot) {
         newDotLocation(dot)
         console.log('you did not hit the dot in time')
       }
-    }, 2000)
+    }, game.timeInterval)
   } else if (game.strikes === 3) {
     setTimeout(() => {
       alert('sorry you lost. Click "Restart" to play again')
@@ -73,4 +74,3 @@ restart.onclick = function () {
     location.reload()
   }
 }
-// to do
