@@ -8,13 +8,15 @@ let game = {
   rows: ['1', '2', '3', '4', '5'],
   currentPosition: [],
   currentScore: 0,
-  turnCount: []
+  turnCount: [],
+  started: false,
+  strikes: 0
 }
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max)
 }
-function dotNewTile() {
+function dotStartTile() {
   let column = game.columns[getRandomInt(5)]
   let row = game.rows[getRandomInt(5)]
 
@@ -27,23 +29,16 @@ function dotNewTile() {
   // now we need to create a dot in the grid location
 
   let dot = document.createElement('div')
-  dot.setAttribute('class', 'dot') //we might make this an ID
-  compChoice.append(dot) //make sure this is correct.
+  dot.setAttribute('class', 'dot')
+  compChoice.append(dot)
 
-  // extra old code
+  setTimeout(() => {
+    newDotLocation(dot)
+    console.log('Delayed for 1 second.')
+  }, 2000)
 
-  // if (compChoice.innerText != 'x' && compChoice.innerText != 'o') {
-  //   compChoice.innerText = computer.selection
-  //   game.turnCount.push('i')
-  //   let tOrder = document.querySelectorAll('.turnOrder')[0]
-  //   tOrder.innerText = 'Your turn.'
-  //   computer.turn = false
-  //   setTimeout(checkLoss, '50')
-  // } else if (game.turns.length > 8) {
-  //   console.log('last turn')
-  // } else {
-  //   computerChoice()
-  // }
+  // now we have created a dot in a random grid position - now we need the function to wait 2 seconds and then delete this dot and create another dot
+  //(preferably create the dot somewhere else)
 }
 
 // make a game intializor
@@ -51,5 +46,28 @@ function dotNewTile() {
 let startGame = document.querySelector('.startButton')
 
 startGame.onclick = function () {
-  dotNewTile()
+  if (game.started === false) {
+    game.started = true
+    dotStartTile()
+  }
+}
+
+function newDotLocation(dot) {
+  game.strikes++
+  let column = game.columns[getRandomInt(5)]
+  let row = game.rows[getRandomInt(5)]
+
+  let newClassLocation = row + ' ' + column
+
+  let compChoice = document.getElementsByClassName(newClassLocation)[0]
+
+  compChoice.append(dot)
+  if (game.strikes != 3) {
+    setTimeout(() => {
+      newDotLocation(dot)
+      console.log('you did not hit the dot in time')
+    }, 2000)
+  } else {
+    alert('sorry you lost. Reload the page to play again')
+  }
 }
