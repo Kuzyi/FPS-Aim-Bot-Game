@@ -54,7 +54,7 @@ function newDotLocation(dot) {
   compChoice.append(dot)
   if (game.strikes != 3) {
     setTimeout(() => {
-      if ((oldScore = game.currentScore)) {
+      if (oldScore === game.currentScore) {
         game.strikes++
         document.getElementsByClassName('strikes')[0].innerHTML = game.strikes
         newDotLocation(dot)
