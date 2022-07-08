@@ -1,3 +1,6 @@
+// Start page code
+
+// Game Page Code
 let game = {
   columns: ['a', 'b', 'c', 'd', 'e'],
   rows: ['1', '2', '3', '4', '5'],
