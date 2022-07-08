@@ -51,7 +51,7 @@ function newDotLocation(dot) {
     case 20:
       dot.style.width = '25%'
       dot.style.paddingBottom = '25%'
-      dot.style.backgroundColor = 'organge'
+      dot.style.backgroundColor = 'orange'
       break
     case 25:
       game.timeInterval = '1000'
