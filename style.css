@@ -1,12 +1,30 @@
-h1 {
-  background-color: white;
+* {
+  background-color: #E07A5F;
+  color: #3d405b
 }
 
-* {
-  background-color: white;
+h1 {
+  /* background-color: ; */
+  text-align: center;
+  border: solid 10px #81B29A;
+  border-radius: 5px;
+  background-color: #f2cc8f;
 }
+
+.options{
+  text-align: center;
+  border: solid 10px #81B29A;
+  border-radius: 5px;
+  background-color: #f2cc8f;
+}
+
+.gridFrameContainer{
+  text-align: center;
+}
+
 
 .gridFrame {
+  margin-left: 3%;
   height: 50vh;
   width: 50vw;
   display: grid;
@@ -17,9 +35,9 @@ h1 {
 
 .tile {
   height: 14vh;
-  Width: 14vw;
-  background-color: white;
-  border: white solid 5px;
+  Width: 18vw;
+  background-color: #E07A5F;
+  border: #E07A5F solid 5px;
   text-align:center;
   font-size: 5em;
 }
@@ -34,16 +52,45 @@ button {
 
 .dot {
   position: relative;
-  width: 40%;
+  margin: auto;
+  width: 35%;
   height: 0;
-  padding-bottom: 40%;
+  padding-bottom: 35%;
   /* margin-left: 100px;
   margin-top: 25px; */
   border-radius: 100%;
-  background-color: black;
+  background-color: #003049 ;
 
 }
 
 h2 {
   display: inline;
+  margin: 2%;
+  background-color: #f2cc8f;
+}
+
+.intro {
+  background-color: #f2cc8f;
+  text-align: center;
+  border: solid 10px #81B29A;
+  border-radius: 5px;
+
+
+}
+
+p {
+  background-color: #f2cc8f;
+}
+
+
+.start1 {
+  margin: 2%;
+  background-color: #f2cc8f;
+  text-align: center;
+  border: solid 10px #81B29A;
+  border-radius: 5px;
+}
+
+a {
+  background-color: #f2cc8f;
 }
