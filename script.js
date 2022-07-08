@@ -36,21 +36,43 @@ function newDotLocation(dot) {
   game.turnCount++
   console.log(game.turnCount)
 
-  switch (game.turnCount) {
+  switch (game.currentScore) {
     case 5:
       game.timeInterval = '1500'
       break
     case 10:
-      game.timeInterval = '1250'
+      dot.style.width = '30%'
+      dot.style.paddingBottom = '30%'
+      dot.style.backgroundColor = '#81B29A'
       break
     case 15:
-      game.timeInterval = '1000'
+      game.timeInterval = '1250'
       break
     case 20:
-      game.timeInterval = '750'
+      dot.style.width = '25%'
+      dot.style.paddingBottom = '25%'
+      dot.style.backgroundColor = 'organge'
       break
     case 25:
-      game.timeInterval = '700'
+      game.timeInterval = '1000'
+      break
+    case 30:
+      dot.style.width = '20%'
+      dot.style.paddingBottom = '20%'
+      dot.style.backgroundColor = 'magenta'
+      break
+    case 35:
+      game.timeInterval = '900'
+      break
+    case 40:
+      dot.style.width = '15%'
+      dot.style.paddingBottom = '15%'
+      dot.style.backgroundColor = 'black'
+      break
+    case 50:
+      game.timeInterval = '800'
+      dot.style.backgroundColor = 'white'
+      dot.innerHTML = '*'
       break
   }
 
